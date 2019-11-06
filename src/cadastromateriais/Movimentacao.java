@@ -3,7 +3,10 @@ package cadastromateriais;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Movimentacao {
     private int codigoMovimentacao;
@@ -97,5 +100,24 @@ public class Movimentacao {
             return (maior+1); //RETORNA O PROXIMO CÓDIGO A SER INSERIDO
         }
     }
-    
+    public void incluiRegistro(boolean novo) throws IOException{
+        String leitura;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Digite o tipo de movimentação (1=entrada / 2=saida):");
+        leitura=input.nextLine();
+        this.setTipoMovimentacao(Integer.parseInt(leitura));
+        System.out.println("Digite o codigo do Produto produto que deseja incluir:");
+        //listar produtos para facilitar para o usário
+        leitura=input.nextLine();
+        this.setCodProduto(Integer.parseInt(leitura));
+        System.out.println("Digite a quantidade movimentada:");
+        //se for uma saida, seria interessante informar o stoque disponivel para evitar saidas maiores que o estoque
+        leitura=input.nextLine();
+        this.setQuantidadeMovimentacao(Integer.parseInt(leitura));
+        this.setCodigoMovimentacao(this.UltimoCodigo());
+        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt", novo)) {
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf(this.getCodigoMovimentacao()+";"+this.getTipoMovimentacao()+";"+this.quantidadeMovimentacao+";"+this.codProduto+"\n");
+        }
+     }
 }
