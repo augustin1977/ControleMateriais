@@ -1,0 +1,6 @@
+Cod_categoria; Nome categoria;
+1;Materiais fixação;
+2;Pneus e artefatos de Borracha;
+3;Materiais Elétricos;
+4;Tintas;
+5;Oleos e Lubrificantes;
