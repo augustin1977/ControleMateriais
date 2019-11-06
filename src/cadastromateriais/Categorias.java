@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Categorias {
+public final class Categorias {
     private int cod_categoria;
     private String nome_categoria;
     
@@ -13,6 +13,9 @@ public class Categorias {
     public Categorias(int cod_categoria, String nome_categoria) {
         this.cod_categoria = cod_categoria;
         this.nome_categoria = nome_categoria;
+    }
+    public Categorias() throws IOException{
+        this.buscaRegistro(0);
     }
 
     public String getNome_categoria() {
