@@ -92,5 +92,34 @@ public final class Categorias {
         }
         
     }
+    public String listaCategorias() throws FileNotFoundException, IOException{
+        String[] array=new String[10];
+        String retorno="---------------------------\ncodigo -  Nome Categoria\n";
+        int tamanho=0;
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt"))
+        {
+            BufferedReader lerArq = new BufferedReader(arq2);            
+            String linha = lerArq.readLine(); 
+            while (linha != null) {
+                tamanho++;
+                array = linha.split(";");
+                if (tamanho<10){
+                    retorno+=array[0]+"      -  "+array[1]+"\n";
+                }
+                else if (tamanho<100){
+                    retorno+=array[0]+"     -  "+array[1]+"\n";
+                }
+                else if (tamanho<1000){
+                    retorno+=array[0]+"    -  "+array[1]+"\n";
+                }
+                else if (tamanho<10000){
+                    retorno+=array[0]+"    -  "+array[1]+"\n";
+                }
+                linha = lerArq.readLine();
+            }
+        }
+        retorno+="---------------------------\n";
+        return retorno;
+    }
 
 }

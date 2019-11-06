@@ -28,7 +28,11 @@ public class CadastroMateriais {
         //c1.incluiRegistro(true);
         //f1.incluiRegistro(true);
         //p1.incluiRegistro(true);
-        m1.incluiRegistro(true);
+        //m1.incluiRegistro(true);
+        System.out.println(c1.listaCategorias());
+        System.out.println(f1.listaFonecedores());
+        System.out.println(p1.listaProdutos());
+        System.out.println(m1.listaMovimentos());
     }
 
 }
