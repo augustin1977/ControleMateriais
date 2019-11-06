@@ -17,6 +17,9 @@ public class Movimentacao {
         this.quantidadeMovimentacao = quantidadeMovimentacao;
         this.codProduto = codProduto;
     }
+    public Movimentacao() throws IOException {
+        this.buscaRegistro(0);
+    }
 
     public int getCodProduto() {
         return codProduto;
@@ -56,7 +59,7 @@ public class Movimentacao {
         this.quantidadeMovimentacao=0;
         this.codProduto=0;
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt")) {
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lê a primeira linha
@@ -66,9 +69,8 @@ public class Movimentacao {
                 if (this.codigoMovimentacao==busca){
                     achei=true;
                     this.tipoMovimentacao=Integer.parseInt(array[1]);
-                    this.tipoMovimentacao=Integer.parseInt(array[2]);
-                    this.quantidadeMovimentacao=Integer.parseInt(array[3]);
-                    this.codProduto=Integer.parseInt(array[4]);
+                    this.quantidadeMovimentacao=Integer.parseInt(array[2]);
+                    this.codProduto=Integer.parseInt(array[3]);
                     
                 }
                 linha = lerArq.readLine();
