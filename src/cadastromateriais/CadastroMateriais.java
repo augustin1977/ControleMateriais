@@ -21,8 +21,7 @@ public class CadastroMateriais {
         c1.buscaRegistro(p1.getCodCategoria());
         f1.buscaRegistro(p1.getCodFornecedor());
         System.out.println(m1.getCodigoMovimentacao()+" - "+m1.getTipoMovimentacao()+" - "+m1.getQuantidadeMovimentacao()+" - "+m1.getCodProduto()+" - "+p1.getdescricao()+ " - R$"+ p1.getPreco()*m1.getQuantidadeMovimentacao()+" - Fornecido por: "+ f1.getNomeFornecedor()+" - categoria:"+ c1.getnomeCategoria());
-        
-
+        System.out.println(c1.UltimoCodigo());
     }
 
 }
