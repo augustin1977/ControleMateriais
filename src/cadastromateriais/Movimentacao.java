@@ -119,5 +119,63 @@ public class Movimentacao {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf(this.getCodigoMovimentacao()+";"+this.getTipoMovimentacao()+";"+this.quantidadeMovimentacao+";"+this.codProduto+"\n");
         }
-     }
+    }
+        
+        public String listaMovimentos() throws FileNotFoundException, IOException{
+        String[] array=new String[10];
+        String retorno="---------------------------\ncodigo -  Nome Categoria -  Codigo Produto\n";
+        int tamanho=0;
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt"))
+        {
+            BufferedReader lerArq = new BufferedReader(arq2);            
+            String linha = lerArq.readLine(); 
+            while (linha != null) {
+                tamanho++;
+                array = linha.split(";");
+                if ("1".equals(array[1])){
+                    array[1]="Entrada";
+                }
+                else{
+                    array[1]="Saída";
+                }
+                if (tamanho<10){
+                    if ("Entrada".equals(array[1])){
+                        retorno+=array[0]+"      -  "+array[1]+"        -  "+array[3]+"\n";
+                    }
+                    else{
+                        retorno+=array[0]+"      -  "+array[1]+"          -  "+array[3]+"\n";
+                    }
+                }
+                else if (tamanho<100){
+                    if ("Entrada".equals(array[1])){
+                        retorno+=array[0]+"     -  "+array[1]+"        -  "+array[3]+"\n";
+                    }
+                    else{
+                        retorno+=array[0]+"     -  "+array[1]+"          -  "+array[3]+"\n";
+                    }
+                    
+                }
+                else if (tamanho<1000){
+                    if ("Entrada".equals(array[1])){
+                        retorno+=array[0]+"    -  "+array[1]+"        -  "+array[3]+"\n";
+                    }
+                    else{
+                        retorno+=array[0]+"    -  "+array[1]+"          -  "+array[3]+"\n";
+                    }
+                }
+                else if (tamanho<10000){
+                    if ("Entrada".equals(array[1])){
+                        retorno+=array[0]+"    -  "+array[1]+"        -  "+array[3]+"\n";
+                    }
+                    else{
+                       retorno+=array[0]+"    -  "+array[1]+"          -  "+array[3]+"\n"; 
+                    }
+                }
+                linha = lerArq.readLine();
+            }
+        }
+        retorno+="---------------------------\n";
+        return retorno;
+    }
+     
 }
