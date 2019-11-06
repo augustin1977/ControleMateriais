@@ -1,7 +1,6 @@
-cod_fornecedor;nm_fornecedor;tel_fornecedor;
-1;Auto Peças Mateguaçu;37250911;
-2;Zé das Peças;37201121;
-3;José Varejo de Peças;37265522;
-4;Peças e Variados;37231188;
-5;Mecanica Simas Turbo;37246655;
-6;Fornetudo;32116623;
+1;Auto Peças Mateguaçu;37250911
+2;Zé das Peças;37201121
+3;José Varejo de Peças;37265522
+4;Peças e Variados;37231188
+5;Mecanica Simas Turbo;37246655
+6;Fornetudo;32116623

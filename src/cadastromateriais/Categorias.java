@@ -18,31 +18,31 @@ public final class Categorias {
         this.buscaRegistro(0);
     }
 
-    public String getNome_categoria() {
+    public String getnomeCategoria() {
         return nome_categoria;
     }
 
-    public void setNome_categoria(String nome_categoria) {
+    public void setnomeCategoria(String nome_categoria) {
         this.nome_categoria = nome_categoria;
     }
 
-    public int getCod_categoria() {
+    public int getcodCategoria() {
         return cod_categoria;
     }
 
-    public void setCod_categoria(int cod_categoria) {
+    public void setcodCategoria(int cod_categoria) {
         this.cod_categoria = cod_categoria;
     }
     
     public void buscaRegistro(int busca) throws FileNotFoundException, IOException{
         int indice,codigo;
-        this.nome_categoria="Item nÃ£o encontrado";
+        this.nome_categoria="Item não encontrado";
         this.cod_categoria=0;
         boolean achei=false;
         try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
-            String linha = lerArq.readLine(); // lÃª a primeira linha
+            String linha = lerArq.readLine(); // lê a primeira linha
             
             while (linha != null && !achei) {
                 
