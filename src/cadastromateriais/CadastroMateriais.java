@@ -1,6 +1,5 @@
 package cadastromateriais;
 
-import java.awt.SystemColor;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -51,6 +50,7 @@ public class CadastroMateriais {
     }
 
     public static void main(String[] args) throws IOException {
+
         Menu();
     }
 
