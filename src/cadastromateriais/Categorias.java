@@ -56,5 +56,25 @@ public final class Categorias {
             }
         }
     }
+    
+    public int UltimoCodigo() throws FileNotFoundException, IOException
+    {      
+        int maior, codigo, indice;
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt"))
+        {
+            BufferedReader lerArq = new BufferedReader(arq2);            
+            String linha = lerArq.readLine(); 
+            indice = linha.indexOf(";", 0);
+            maior = Integer.parseInt(linha.substring(0,indice)); //DECLARA COMO O MAIOR, O PRIMEIRO CÓDIGO LIDO
+            while (linha != null) {                
+                codigo = Integer.parseInt(linha.substring(0,indice));
+                if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
+                    maior = codigo;
+                }
+                linha = lerArq.readLine();
+            }
+            return (maior+1); //RETORNA O PROXIMO CÓDIGO A SER INSERIDO
+        }
+    }
 
 }
