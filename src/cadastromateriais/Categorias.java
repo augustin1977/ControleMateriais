@@ -31,28 +31,27 @@ public class Categorias {
         this.cod_categoria = cod_categoria;
     }
     
-    public String buscaRegistro(int busca) throws FileNotFoundException, IOException{
+    public void buscaRegistro(int busca) throws FileNotFoundException, IOException{
         int indice,codigo;
-        String retorno="Codigo não encontrado";
+        this.nome_categoria="Item não encontrado";
+        this.cod_categoria=0;
         boolean achei=false;
-        FileReader arq2 = new FileReader("categoria.txt");
-
-        BufferedReader lerArq = new BufferedReader(arq2);
-
-        String linha = lerArq.readLine(); // lê a primeira linha
-
-        while (linha != null && !achei) {
-
-            indice=linha.indexOf(";", 0);
-            this.cod_categoria=Integer.parseInt(linha.substring(0, indice));
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt")) {
+            BufferedReader lerArq = new BufferedReader(arq2);
+            
+            String linha = lerArq.readLine(); // lê a primeira linha
+            
+            while (linha != null && !achei) {
+                
+                indice=linha.indexOf(";", 0);
+                this.cod_categoria=Integer.parseInt(linha.substring(0, indice));
                 if (this.cod_categoria==busca){
                     achei=true;
-                    retorno=linha.substring(indice+1);
+                    this.nome_categoria=linha.substring(indice+1);
                 }
-            linha = lerArq.readLine();
+                linha = lerArq.readLine();
+            }
         }
-        arq2.close();
-        return (retorno);
     }
 
 }
