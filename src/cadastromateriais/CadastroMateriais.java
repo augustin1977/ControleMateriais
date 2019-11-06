@@ -8,6 +8,7 @@ public class CadastroMateriais {
         Categorias c1=new Categorias();
         Fornecedor f1=new Fornecedor();
         Produtos p1=new Produtos();
+        Movimentacao m1= new Movimentacao();
         f1.buscaRegistro(p1.getCodFornecedor());
         c1.buscaRegistro(3);
         System.out.println(c1.getcodCategoria()+" - "+c1.getnomeCategoria());
@@ -15,7 +16,6 @@ public class CadastroMateriais {
         System.out.println(f1.getCodFornecedor()+" - "+f1.getNomeFornecedor()+" - "+f1.getTelefoneFornecedor());
         p1.buscaRegistro(5);
         System.out.println(p1.getCodProduto()+" - "+p1.getdescricao()+" - "+p1.getPreco()+" - "+p1.getCodCategoria()+" - "+p1.getCodFornecedor()+" - "+f1.getNomeFornecedor());
-        Movimentacao m1= new Movimentacao();
         m1.buscaRegistro(10);
         p1.buscaRegistro(m1.getCodProduto());
         c1.buscaRegistro(p1.getCodCategoria());
@@ -27,7 +27,8 @@ public class CadastroMateriais {
         System.out.println(m1.UltimoCodigo());
         //c1.incluiRegistro(true);
         //f1.incluiRegistro(true);
-        p1.incluiRegistro(true);
+        //p1.incluiRegistro(true);
+        m1.incluiRegistro(true);
     }
 
 }
