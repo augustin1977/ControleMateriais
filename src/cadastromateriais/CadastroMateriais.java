@@ -18,7 +18,7 @@ public class CadastroMateriais {
         Movimentacao m1= new Movimentacao();
         m1.buscaRegistro(10);
         p1.buscaRegistro(m1.getCodProduto());
-        System.out.println(m1.getCodigoMovimentacao()+" - "+m1.getTipoMovimentacao()+" - "+m1.getQuantidadeMovimentacao()+" - "+m1.getCodProduto()+" - "+p1.getdescricao());
+        System.out.println(m1.getCodigoMovimentacao()+" - "+m1.getTipoMovimentacao()+" - "+m1.getQuantidadeMovimentacao()+" - "+m1.getCodProduto()+" - "+p1.getdescricao()+ " - R$"+ p1.getPreco()*m1.getQuantidadeMovimentacao());
         
 
     }
