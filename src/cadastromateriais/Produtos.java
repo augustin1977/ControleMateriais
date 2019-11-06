@@ -104,7 +104,6 @@ public class Produtos {
             while (linha != null) {    
                 indice = linha.indexOf(";", 0);
                 codigo = Integer.parseInt(linha.substring(0,indice));
-                System.out.println("Percorrendo Codigo: "+codigo+" "+maior);
                 if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
                     maior = codigo;
                 }
@@ -121,10 +120,11 @@ public class Produtos {
         System.out.println("Digite o preço produto que deseja incluir:");
         leitura=input.nextLine();
         this.setPreco(Float.parseFloat(leitura));
+         System.out.println(this.getPreco());
         System.out.println("Digite a categoria do produto que deseja incluir:");
         //seria interessante listar todas as categorias para facilitar o usuário;
         leitura=input.nextLine();
-        this.setPreco(Integer.parseInt(leitura));
+        this.setCodCategoria(Integer.parseInt(leitura));
         System.out.println("Digite codigo do fornecedor do produto que deseja incluir:");
         //seria interessante listar todas os fornecedores para facilitar o usuário;
         leitura=input.nextLine();
