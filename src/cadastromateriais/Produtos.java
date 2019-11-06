@@ -129,7 +129,6 @@ public class Produtos {
         //seria interessante listar todas os fornecedores para facilitar o usuário;
         leitura=input.nextLine();
         this.setCodFornecedor(Integer.parseInt(leitura));
-        
         this.setCodProduto(this.UltimoCodigo());
         try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
