@@ -3,7 +3,10 @@ package cadastromateriais;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public final class Categorias {
     private int cod_categoria;
@@ -66,7 +69,8 @@ public final class Categorias {
             String linha = lerArq.readLine(); 
             indice = linha.indexOf(";", 0);
             maior = Integer.parseInt(linha.substring(0,indice)); //DECLARA COMO O MAIOR, O PRIMEIRO CÓDIGO LIDO
-            while (linha != null) {                
+            while (linha != null) {   
+                indice = linha.indexOf(";", 0);
                 codigo = Integer.parseInt(linha.substring(0,indice));
                 if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
                     maior = codigo;
@@ -75,6 +79,18 @@ public final class Categorias {
             }
             return (maior+1); //RETORNA O PROXIMO CÓDIGO A SER INSERIDO
         }
+    }
+    
+    public void incluiRegistro(boolean novo) throws IOException{
+        Scanner input = new Scanner(System.in);
+        System.out.println("Digite o nome da categoria que deseja incluir:");
+        this.setnomeCategoria(input.nextLine());
+        this.setcodCategoria(this.UltimoCodigo());
+        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt", novo)) {
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf(this.cod_categoria+";"+this.nome_categoria+"\n");
+        }
+        
     }
 
 }
