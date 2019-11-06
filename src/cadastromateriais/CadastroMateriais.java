@@ -1,6 +1,8 @@
 package cadastromateriais;
 
+import java.awt.SystemColor;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class CadastroMateriais {
     public static String entraEspacos(String s,int n){
@@ -9,36 +11,47 @@ public class CadastroMateriais {
         }
         return s;
     }
+    
+    private static void Menu() throws IOException
+    {
+        //DECLARAÇÕES DOS OBJETOS 
+        Categorias categoria = new Categorias();
+        Fornecedor fornecedor = new Fornecedor();
+        Produtos produto =new Produtos();
+        Movimentacao movimentacao = new Movimentacao(); 
+        Scanner input = new Scanner(System.in);
+        System.out.println("CADASTRO DE MATERIAIS!");
+        System.out.print("1. Cadastrar Categoria\n2.Cadastrar Fornecedor\n3.Cadastrar Produto\n4.Cadastrar Movimentação\n");
+        System.out.print("Opção: ");
+        int op = input.nextInt();
+        if(op == 1)
+        {
+            categoria.incluiRegistro(true); //PASSANDO TRUE PARA INDICAR A INSERÇÃO EM UM ARQUIVO EXISTENTE            
+        }
+        else if(op == 2)
+        {
+            fornecedor.incluiRegistro(true);
+        }
+        else if(op == 3)
+        {
+            produto.incluiRegistro(true);
+        }
+        else if(op == 4)
+        {
+            movimentacao.incluiRegistro(true);
+        }
+        
+        System.out.println("\nDeseja voltar ao menu? (1. Sim / 2.Não): ");
+        int voltar = input.nextInt();
+        
+        if(voltar == 1)
+        {
+            Menu();
+        }
+    }
 
     public static void main(String[] args) throws IOException {
-        Categorias c1=new Categorias();
-        Fornecedor f1=new Fornecedor();
-        Produtos p1=new Produtos();
-        Movimentacao m1= new Movimentacao();
-        f1.buscaRegistro(p1.getCodFornecedor());
-        c1.buscaRegistro(3);
-        System.out.println(c1.getcodCategoria()+" - "+c1.getnomeCategoria());
-        f1.buscaRegistro(1);
-        System.out.println(f1.getCodFornecedor()+" - "+f1.getNomeFornecedor()+" - "+f1.getTelefoneFornecedor());
-        p1.buscaRegistro(5);
-        System.out.println(p1.getCodProduto()+" - "+p1.getdescricao()+" - "+p1.getPreco()+" - "+p1.getCodCategoria()+" - "+p1.getCodFornecedor()+" - "+f1.getNomeFornecedor());
-        m1.buscaRegistro(10);
-        p1.buscaRegistro(m1.getCodProduto());
-        c1.buscaRegistro(p1.getCodCategoria());
-        f1.buscaRegistro(p1.getCodFornecedor());
-        System.out.println(m1.getCodigoMovimentacao()+" - "+m1.getTipoMovimentacao()+" - "+m1.getQuantidadeMovimentacao()+" - "+m1.getCodProduto()+" - "+p1.getdescricao()+ " - R$"+ p1.getPreco()*m1.getQuantidadeMovimentacao()+" - Fornecido por: "+ f1.getNomeFornecedor()+" - categoria:"+ c1.getnomeCategoria());
-        System.out.println(c1.UltimoCodigo());
-        System.out.println(f1.UltimoCodigo());
-        System.out.println(p1.UltimoCodigo());
-        System.out.println(m1.UltimoCodigo());
-        //c1.incluiRegistro(true);
-        //f1.incluiRegistro(true);
-        //p1.incluiRegistro(true);
-        //m1.incluiRegistro(true);
-        System.out.println(c1.listaCategorias());
-        System.out.println(f1.listaFonecedores());
-        System.out.println(p1.listaProdutos());
-        System.out.println(m1.listaMovimentos());
+        Menu();
     }
 
 }
