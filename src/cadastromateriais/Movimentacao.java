@@ -86,7 +86,8 @@ public class Movimentacao {
             String linha = lerArq.readLine(); 
             indice = linha.indexOf(";", 0);
             maior = Integer.parseInt(linha.substring(0,indice)); //DECLARA COMO O MAIOR, O PRIMEIRO CÓDIGO LIDO
-            while (linha != null) {                
+            while (linha != null) { 
+                indice = linha.indexOf(";", 0);
                 codigo = Integer.parseInt(linha.substring(0,indice));
                 if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
                     maior = codigo;

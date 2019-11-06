@@ -3,7 +3,10 @@ package cadastromateriais;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Produtos {
     private int codProduto;
@@ -98,8 +101,10 @@ public class Produtos {
             String linha = lerArq.readLine(); 
             indice = linha.indexOf(";", 0);
             maior = Integer.parseInt(linha.substring(0,indice)); //DECLARA COMO O MAIOR, O PRIMEIRO CÓDIGO LIDO
-            while (linha != null) {                
+            while (linha != null) {    
+                indice = linha.indexOf(";", 0);
                 codigo = Integer.parseInt(linha.substring(0,indice));
+                System.out.println("Percorrendo Codigo: "+codigo+" "+maior);
                 if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
                     maior = codigo;
                 }
@@ -108,6 +113,28 @@ public class Produtos {
             return (maior+1); //RETORNA O PROXIMO CÓDIGO A SER INSERIDO
         }
     }
-    
+     public void incluiRegistro(boolean novo) throws IOException{
+        String leitura;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Digite a descrição do produto que deseja incluir que deseja incluir:");
+        this.setdescricao(input.nextLine());
+        System.out.println("Digite o preço produto que deseja incluir:");
+        leitura=input.nextLine();
+        this.setPreco(Float.parseFloat(leitura));
+        System.out.println("Digite a categoria do produto que deseja incluir:");
+        //seria interessante listar todas as categorias para facilitar o usuário;
+        leitura=input.nextLine();
+        this.setPreco(Integer.parseInt(leitura));
+        System.out.println("Digite codigo do fornecedor do produto que deseja incluir:");
+        //seria interessante listar todas os fornecedores para facilitar o usuário;
+        leitura=input.nextLine();
+        this.setCodFornecedor(Integer.parseInt(leitura));
+        
+        this.setCodProduto(this.UltimoCodigo());
+        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt", novo)) {
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.printf(this.getCodProduto()+";"+this.getdescricao()+";"+this.getPreco()+";"+this.getCodCategoria()+";"+this.getCodFornecedor()+"\n");
+        }
+     }
 
 }
