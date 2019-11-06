@@ -113,6 +113,8 @@ public class Produtos {
     }
      public void incluiRegistro(boolean novo) throws IOException{
         String leitura;
+        Categorias c1=new Categorias();
+        Fornecedor f1=new Fornecedor();
         Scanner input = new Scanner(System.in);
         System.out.println("Digite a descrição do produto que deseja incluir que deseja incluir:");
         this.setdescricao(input.nextLine());
@@ -121,11 +123,15 @@ public class Produtos {
         this.setPreco(Float.parseFloat(leitura));
          System.out.println(this.getPreco());
         System.out.println("Digite a categoria do produto que deseja incluir:");
+         System.out.println(c1.listaCategorias());
+         System.out.print(":");
         //seria interessante listar todas as categorias para facilitar o usuário;
         leitura=input.nextLine();
         this.setCodCategoria(Integer.parseInt(leitura));
         System.out.println("Digite codigo do fornecedor do produto que deseja incluir:");
         //seria interessante listar todas os fornecedores para facilitar o usuário;
+        System.out.println(f1.listaFonecedores());
+        System.out.print(":");
         leitura=input.nextLine();
         this.setCodFornecedor(Integer.parseInt(leitura));
         this.setCodProduto(this.UltimoCodigo());
