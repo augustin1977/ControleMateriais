@@ -102,16 +102,19 @@ public class Movimentacao {
     }
     public void incluiRegistro(boolean novo) throws IOException{
         String leitura;
+        Produtos p1=new Produtos();
         Scanner input = new Scanner(System.in);
         System.out.println("Digite o tipo de movimentação (1=entrada / 2=saida):");
         leitura=input.nextLine();
         this.setTipoMovimentacao(Integer.parseInt(leitura));
         System.out.println("Digite o codigo do Produto produto que deseja incluir:");
+        System.out.println(p1.listaProdutos());
+        System.out.print(":");
         //listar produtos para facilitar para o usário
         leitura=input.nextLine();
         this.setCodProduto(Integer.parseInt(leitura));
         System.out.println("Digite a quantidade movimentada:");
-        //se for uma saida, seria interessante informar o stoque disponivel para evitar saidas maiores que o estoque
+        //se for uma saida, seria interessante informar o estoque disponivel para evitar saidas maiores que o estoque
         leitura=input.nextLine();
         this.setQuantidadeMovimentacao(Integer.parseInt(leitura));
         this.setCodigoMovimentacao(this.UltimoCodigo());
@@ -120,7 +123,38 @@ public class Movimentacao {
             gravarArq.printf(this.getCodigoMovimentacao()+";"+this.getTipoMovimentacao()+";"+this.quantidadeMovimentacao+";"+this.codProduto+"\n");
         }
     }
-        
+    
+    public String listaMovimentos() throws FileNotFoundException, IOException{
+        String[] array=new String[10];
+        String retorno="---------------------------\ncodigo -  Nome Categoria -  Codigo Produto -  Qtd Movimentaçao\n";
+        int tamanho=0;
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt"))
+        {
+            BufferedReader lerArq = new BufferedReader(arq2);            
+            String linha = lerArq.readLine(); 
+            while (linha != null) {
+                tamanho++;
+                array = linha.split(";");
+                if ("1".equals(array[1])){
+                    array[1]="Entrada";
+                }
+                else{
+                    array[1]="Saida";
+                }
+                retorno+=CadastroMateriais.entraEspacos(array[0], 7)+"-  ";
+                retorno+=CadastroMateriais.entraEspacos(array[1], 15)+"-  ";
+                retorno+=CadastroMateriais.entraEspacos(array[3], 15)+"-  ";
+                retorno+=CadastroMateriais.entraEspacos(array[2], 1)+"\n";
+                linha = lerArq.readLine();
+            }
+        }
+                
+                
+                
+        retorno+="---------------------------\n";
+        return retorno;
+    }
+    /*    
         public String listaMovimentos() throws FileNotFoundException, IOException{
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Categoria -  Codigo Produto\n";
@@ -177,5 +211,5 @@ public class Movimentacao {
         retorno+="---------------------------\n";
         return retorno;
     }
-     
+     */
 }

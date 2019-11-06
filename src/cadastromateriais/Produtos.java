@@ -16,7 +16,6 @@ public class Produtos {
     private int codFornecedor;
 
     public Produtos() {
-        
     }
     
     public Produtos(int codProduto, String descricao, float preco, int codCategoria, int codFornecedor) {
