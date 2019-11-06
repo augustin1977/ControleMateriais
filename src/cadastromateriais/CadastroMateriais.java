@@ -3,6 +3,12 @@ package cadastromateriais;
 import java.io.IOException;
 
 public class CadastroMateriais {
+    public static String entraEspacos(String s,int n){
+        while(s.length()< n){
+            s+=" ";
+        }
+        return s;
+    }
 
     public static void main(String[] args) throws IOException {
         Categorias c1=new Categorias();
