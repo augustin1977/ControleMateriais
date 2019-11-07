@@ -203,7 +203,7 @@ public class Produtos {
      }
      public String mostraRegistro(){
          String retorno;
-         if (this.codCategoria==0){
+         if (this.codProduto==0){
              retorno="Produto não foi encontrado encontrado.\n";
          }
          else{

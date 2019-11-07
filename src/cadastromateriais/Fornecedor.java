@@ -68,6 +68,9 @@ public class Fornecedor {
                 linha = lerArq.readLine();
             }
         }
+        if (!achei){
+            this.codFornecedor=0;
+        }
     }
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
@@ -131,5 +134,19 @@ public class Fornecedor {
         retorno+="---------------------------\n";
         return retorno;
     }
+    public String mostraRegistro(){
+         String retorno;
+         if (this.getCodFornecedor()==0){
+             retorno="fornecedor não foi encontrado encontrado.\n";
+         }
+         else{
+            retorno=("O fornecedor foi encontrado!\n");
+            retorno+="---------------------------\nCODIGO  - NOME FORNECEDOR                   - TELEFONE FORNECEDOR\n";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodFornecedor()), 7)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(this.getNomeFornecedor(), 33)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(this.getTelefoneFornecedor(), 20)+"\n";
+         }
+         return retorno;
+     }
 
 }

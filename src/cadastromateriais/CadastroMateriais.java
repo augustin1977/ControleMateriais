@@ -35,17 +35,19 @@ public class CadastroMateriais {
                 System.out.println("Digite o codigo do movimento a ser pesquisado:");
                 leitura=input.nextLine();
                 movimentos.buscaRegistro(Integer.parseInt(leitura));
-                
+                System.out.println(movimentos.mostraRegistro());
             }
             else if (op==3){
                 System.out.println("Digite o codigo da categoria a ser pesquisado:");
                 leitura=input.nextLine();
                 categoria.buscaRegistro(Integer.parseInt(leitura));
+                System.out.println(categoria.mostraRegistro());
             }
             else if (op==4){
                 System.out.println("Digite o codigo do fornecedor a ser pesquisado:");
                 leitura=input.nextLine();
                 fornecedor.buscaRegistro(Integer.parseInt(leitura));
+                System.out.println(fornecedor.mostraRegistro());
             }
             else if (op==9){
                 System.out.println("Retornando ao Menu Principal");

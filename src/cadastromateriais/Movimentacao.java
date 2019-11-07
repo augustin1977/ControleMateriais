@@ -79,6 +79,9 @@ public class Movimentacao {
                 linha = lerArq.readLine();
             }
         }
+        if (!achei){
+            this.codigoMovimentacao=0;
+        }
     }
        int UltimoCodigo() throws FileNotFoundException, IOException
     {      
@@ -154,5 +157,28 @@ public class Movimentacao {
         retorno+="---------------------------\n";
         return retorno;
     }
+    
+    public String mostraRegistro(){
+         String retorno;
+         String temp;
+         if (this.codigoMovimentacao==0){
+             retorno="Movimento não foi encontrado encontrado.\n";
+         }
+         else{
+            retorno=("O movimento foi encontrado!\n");
+            retorno+="---------------------------\nCODIGO - TIPO MOVIMENTAÇÃO - QUANTIDADE MOVIMENTADA - CODIGO PRODUTO\n";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodigoMovimentacao()), 6)+" - ";
+            if (this.getCodigoMovimentacao()==1){
+                temp="Entrada";
+            }
+            else{
+                temp="Saida";
+            }
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getTipoMovimentacao())+" = "+temp, 17)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getQuantidadeMovimentacao()), 22)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodProduto()), 20)+"\n";
+         }
+         return retorno;
+     }
 
 }

@@ -58,6 +58,9 @@ public final class Categorias {
                 linha = lerArq.readLine();
             }
         }
+        if (!achei){
+            this.cod_categoria=0;
+        }
     }
     
     public int UltimoCodigo() throws FileNotFoundException, IOException
@@ -121,5 +124,18 @@ public final class Categorias {
         retorno+="---------------------------\n";
         return retorno;
     }
+    public String mostraRegistro(){
+         String retorno;
+         if (this.cod_categoria==0){
+             retorno="Categoria não foi encontrado encontrado.\n";
+         }
+         else{
+            retorno=("A categoria foi encontrado!\n");
+            retorno+="---------------------------\nCODIGO  - NOME CATEGORIA\n";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getcodCategoria()), 7)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(this.getnomeCategoria(), 10)+"\n";
+         }
+         return retorno;
+     }
 
 }
