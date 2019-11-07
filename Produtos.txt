@@ -1,0 +1,19 @@
+1;Parafuso 6 mm aluminio rosca soberba;0,80;1;1
+2;Parafuso 8 mm ferro rosca esquerda;0,90;1;2
+3;Pneu 185x60R14 Pirelli;234,00;2;1
+4;pneu 195x50R14 Goodyear;225,00;2;2
+5;Lampada halogena 30w;2,50;3;3
+6;Lampada LED 8w;15,00;3;4
+7;Lampada Xeon 12W;80,00;3;1
+8;Tinta automotiva vermelha ferrari 5L;125,90;4;5
+9;Tinta automotiva branca solida 5L;60,99;4;4
+10;Oleo Lubrificante Shell 1L;12,00;5;5
+11;Oleo Lubrificante Lubrax 1L;11,90;5;2
+12;Oleo de freio DOT3 500ml;15,00;5;3
+13;Lampada Halogena 5W;0,45;3;1
+14;Lampada Halogena 15W;1,36;3;5
+15;Lampada LED 12W Cor Branca;2,75;3;2
+16;Tela LCD automotiva;300,00;3;4
+17;Chapa aço 1020 2mm espessura;150,00;7;8
+18;Chapa aço 1020 5mm espessura;230,00;7;7
+19;Parafuso de roda 12mm cromado;53,00;1;2
