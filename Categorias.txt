@@ -3,3 +3,5 @@
 3;Materiais Elétricos
 4;Tintas
 5;Oleos e Lubrificantes
+6;Vidros e farois
+7;Chapas e peças de Lanternagem
