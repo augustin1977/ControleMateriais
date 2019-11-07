@@ -211,7 +211,7 @@ public class Produtos {
             retorno+="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CODIGO CATEGORIA    - CODIGO FORNECEDOR\n";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodProduto()), 7)+" - ";
             retorno+=CadastroMateriais.entraEspacos(this.getdescricao(), 35)+" - ";
-            retorno+=CadastroMateriais.entraEspacos(String.format("R$%.2f",this.getPreco())2, 9)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(String.format("R$%.2f",this.getPreco()), 9)+" - ";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodCategoria()), 19)+" - ";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodFornecedor()), 10)+"\n";
          }
