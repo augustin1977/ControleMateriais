@@ -90,6 +90,9 @@ public class Produtos {
                 linha = lerArq.readLine();
             }
         }
+        if (!achei){
+            this.codProduto=0;
+        }
     }
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
@@ -142,7 +145,7 @@ public class Produtos {
      }
      public String listaProdutos() throws FileNotFoundException, IOException{
         String[] array=new String[10];
-        String retorno="---------------------------\ncodigo -  Descrição Produto\n";
+        String retorno="---------------------------\nCODIGO -  DESCRIÇÃO PRODUTO\n";
         int tamanho=0;
         try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt"))
         {
@@ -166,8 +169,53 @@ public class Produtos {
                 linha = lerArq.readLine();
             }
         }
-        retorno+="---------------------------\n";
+        retorno+="------------------------------------------------------------\n";
         return retorno;
     }
+     public String relatorioMateriais() throws IOException{
+        String[] array=new String[10];
+        int codFornecedor,codCategoria;
+        String retorno="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CATEGORIA MATERIAL         - NOME FORNECEDOR\n";
+        Categorias categoria=new Categorias();
+        Fornecedor fornecedor=new Fornecedor();
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt"))
+        {
+            BufferedReader lerArq = new BufferedReader(arq2);            
+            String linha = lerArq.readLine(); 
+            while (linha != null) { 
+                array = linha.split(";");
+                codFornecedor=Integer.parseInt(array[4]);
+                codCategoria= Integer.parseInt(array[3]);
+                fornecedor.buscaRegistro(codFornecedor);
+                categoria.buscaRegistro(codCategoria);
+                array[3]=categoria.getnomeCategoria();
+                array[4]=fornecedor.getNomeFornecedor();
+                retorno+=CadastroMateriais.entraEspacos(array[0], 7)+" - ";
+                retorno+=CadastroMateriais.entraEspacos(array[1], 35)+" - ";
+                retorno+=CadastroMateriais.entraEspacos("R$"+array[2], 9)+" - ";
+                retorno+=CadastroMateriais.entraEspacos(array[3], 26)+" - ";
+                retorno+=CadastroMateriais.entraEspacos(array[4], 20)+"\n";
+                linha = lerArq.readLine();
+            }
+        }
+        retorno+="------------------------------------------------------------\n";
+        return retorno;
+     }
+     public String mostraRegistro(){
+         String retorno;
+         if (this.codCategoria==0){
+             retorno="Produto não foi encontrado encontrado.\n";
+         }
+         else{
+            retorno=("O produto foi encontrado!\n");
+            retorno+="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CODIGO CATEGORIA    - CODIGO FORNECEDOR\n";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodProduto()), 7)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(this.getdescricao(), 35)+" - ";
+            retorno+=CadastroMateriais.entraEspacos("R$"+this.getPreco(), 9)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodCategoria()), 19)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodFornecedor()), 10)+"\n";
+         }
+         return retorno;
+     }
 
 }
