@@ -82,7 +82,7 @@ public class Produtos {
                 if (this.codProduto==busca){
                     achei=true;
                     this.descricao=array[1];
-                    this.preco=Float.parseFloat(array[2]);
+                    this.preco=Float.parseFloat(array[2].replaceAll(",", "."));
                     this.codCategoria=Integer.parseInt(array[3]);
                     this.codFornecedor=Integer.parseInt(array[4]);
                     
@@ -140,7 +140,7 @@ public class Produtos {
         this.setCodProduto(this.UltimoCodigo());
         try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
-            gravarArq.printf(this.getCodProduto()+";"+this.getdescricao()+";"+this.getPreco()+";"+this.getCodCategoria()+";"+this.getCodFornecedor()+"\n");
+            gravarArq.printf("%d;%s;%.2f;%d;%d\n",this.getCodProduto(),this.getdescricao(),this.getPreco(),this.getCodCategoria(),this.getCodFornecedor());
         }
      }
      public String listaProdutos() throws FileNotFoundException, IOException{
@@ -211,7 +211,7 @@ public class Produtos {
             retorno+="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CODIGO CATEGORIA    - CODIGO FORNECEDOR\n";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodProduto()), 7)+" - ";
             retorno+=CadastroMateriais.entraEspacos(this.getdescricao(), 35)+" - ";
-            retorno+=CadastroMateriais.entraEspacos("R$"+this.getPreco(), 9)+" - ";
+            retorno+=CadastroMateriais.entraEspacos(String.format("R$%.2f",this.getPreco())2, 9)+" - ";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodCategoria()), 19)+" - ";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodFornecedor()), 10)+"\n";
          }
