@@ -62,7 +62,7 @@ public class Movimentacao {
         this.quantidadeMovimentacao=0;
         this.codProduto=0;
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\movimentacao.txt")) {
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lê a primeira linha
@@ -86,7 +86,7 @@ public class Movimentacao {
        int UltimoCodigo() throws FileNotFoundException, IOException
     {      
         int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\movimentacao.txt"))
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -121,7 +121,7 @@ public class Movimentacao {
         leitura=input.nextLine();
         this.setQuantidadeMovimentacao(Integer.parseInt(leitura));
         this.setCodigoMovimentacao(this.UltimoCodigo());
-        try (FileWriter arq = new FileWriter("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\movimentacao.txt", novo)) {
+        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf(this.getCodigoMovimentacao()+";"+this.getTipoMovimentacao()+";"+this.quantidadeMovimentacao+";"+this.codProduto+"\n");
         }
@@ -131,7 +131,7 @@ public class Movimentacao {
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Categoria -  Codigo Produto -  Qtd Movimentaçao\n";
         int tamanho=0;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\movimentacao.txt"))
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
