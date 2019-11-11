@@ -201,19 +201,21 @@ public class Produtos {
         retorno+="------------------------------------------------------------\n";
         return retorno;
      }
-     public String mostraRegistro(){
+     public String mostraRegistro() throws IOException{
          String retorno;
+         Movimentacao m1=new Movimentacao();
          if (this.codProduto==0){
              retorno="Produto não foi encontrado encontrado.\n";
          }
          else{
             retorno=("O produto foi encontrado!\n");
-            retorno+="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CODIGO CATEGORIA    - CODIGO FORNECEDOR\n";
+            retorno+="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CODIGO CATEGORIA    - CODIGO FORNECEDOR - QTD ESTOQUE \n";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodProduto()), 7)+" - ";
             retorno+=CadastroMateriais.entraEspacos(this.getdescricao(), 35)+" - ";
             retorno+=CadastroMateriais.entraEspacos(String.format("R$%.2f",this.getPreco()), 9)+" - ";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodCategoria()), 19)+" - ";
-            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodFornecedor()), 10)+"\n";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodFornecedor()), 18)+ "- ";
+            retorno+=CadastroMateriais.entraEspacos(Integer.toString(m1.estoque(this.getCodProduto())),10)+"\n";
          }
          return retorno;
      }

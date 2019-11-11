@@ -82,9 +82,10 @@ public class CadastroMateriais {
 
     private static void MenuRelatorios() throws IOException {
         limparSaida();
+        float valor;
         Scanner input = new Scanner(System.in);
         String leitura;
-        int op = 1, subOp=1;
+        int op = 1, subOp=1, estoque=0;
         Produtos produto = new Produtos();
         Movimentacao movimentos = new Movimentacao();
         Categorias categoria = new Categorias();
@@ -113,11 +114,16 @@ public class CadastroMateriais {
                     System.out.println("RELATÓRIO DE MATERIAIS\n" + produto.relatorioMateriais());
                 } else if (op == 6) {
                     System.out.println("RELATÓRIO DE ESTOQUE\n----------------------------------------------");
-                    System.out.println("CODIGO - DESCRIÇÃO DO ITEM                        - QUANTIDADE");
+                    System.out.println("CODIGO - DESCRIÇÃO DO ITEM                        - QUANTIDADE  - PREÇO      - VALOR ESTOQUE");
                     for (int i=0;i<produto.UltimoCodigo();i++){
                         produto.buscaRegistro(i);
                         if (produto.getCodProduto()!=0){
-                            System.out.println(entraEspacos(Integer.toString(produto.getCodProduto()),6)+" - "+entraEspacos(produto.getdescricao(),40) +" - "+ movimentos.estoque(produto.getCodProduto()));
+                            estoque=movimentos.estoque(produto.getCodProduto());
+                            System.out.println(entraEspacos(Integer.toString(produto.getCodProduto()),6)+
+                                    " - "+entraEspacos(produto.getdescricao(),40) +" - "+ 
+                                    entraEspacos(Integer.toString(estoque),11) + " - "+ 
+                                    entraEspacos((String.format("%.2f",produto.getPreco())),10) +
+                                    " - "+ String.format("%.2f",produto.getPreco()*estoque));
                         }
                     }
                     System.out.println("----------------------------------------------");
