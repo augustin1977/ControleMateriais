@@ -1,5 +1,8 @@
 package cadastromateriais;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -35,14 +38,14 @@ public final class Categorias {
 
     public void setcodCategoria(int cod_categoria) {
         this.cod_categoria = cod_categoria;
-    }
+    }      
     
     public void buscaRegistro(int busca) throws FileNotFoundException, IOException{
         int indice,codigo;
         this.nome_categoria="Item não encontrado";
         this.cod_categoria=0;
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt")) {
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lê a primeira linha
@@ -66,7 +69,7 @@ public final class Categorias {
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
         int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -84,12 +87,13 @@ public final class Categorias {
         }
     }
     
-    public void incluiRegistro(boolean novo) throws IOException{
-        Scanner input = new Scanner(System.in);
-        System.out.println("Digite o nome da categoria que deseja incluir:");
+    public void incluiRegistro(boolean novo) throws IOException{               
+        Scanner input = new Scanner(System.in); 
+        CadastroMateriais.limparSaida();
+        System.out.println("CADASTRO DE CATEGORIA!\nDigite o nome da categoria que deseja incluir:");
         this.setnomeCategoria(input.nextLine());
         this.setcodCategoria(this.UltimoCodigo());
-        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt", novo)) {
+        try (FileWriter arq = new FileWriter("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf(this.cod_categoria+";"+this.nome_categoria+"\n");
         }
@@ -99,7 +103,7 @@ public final class Categorias {
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Categoria\n";
         int tamanho=0;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
