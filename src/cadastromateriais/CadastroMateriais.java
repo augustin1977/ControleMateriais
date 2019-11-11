@@ -11,7 +11,7 @@ public class CadastroMateriais {
     public static void limparSaida() {
         try {
             Robot robot = new Robot();
-            robot.setAutoDelay(1);
+            robot.setAutoDelay(5);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_L);
             robot.keyRelease(KeyEvent.VK_CONTROL);
@@ -71,7 +71,7 @@ public class CadastroMateriais {
                 } else {
                     System.out.println("Opção invalida!");
                 }
-                System.out.print("1.Menu Pesquisas\n2.Menu Principal\nOpção: ");
+                System.out.print("1.Menu Pesquisas\n9.Menu Principal\nOpção: ");
                 leitura = input.nextLine();
                 subOp=Integer.parseInt(leitura);
                 op=9;         
@@ -90,6 +90,7 @@ public class CadastroMateriais {
         Categorias categoria = new Categorias();
         Fornecedor fornecedor = new Fornecedor();
         while (subOp==1){
+            op=1;
             while (op != 9) {
                 System.out.println("IMPRESSÃO DE RELATORIOS:\n-------------------------");
                 System.out.print("1.Lista de Produtos\n2.Lista de Movimentos de Materiais \n3.Lista de Categorias\n4.Lista de Fornecedores\n5.Relatório de Materiais\n9.Voltar\n");
@@ -115,7 +116,7 @@ public class CadastroMateriais {
                 } else {
                     System.out.println("Opção invalida!");
                 }
-                System.out.print("1.Menu Relatório\n2.Menu Principal\nOpção: ");
+                System.out.print("1.Menu Relatório\n9.Menu Principal\nOpção: ");
                 leitura = input.nextLine();
                 op=9;
                 subOp = Integer.parseInt(leitura);
