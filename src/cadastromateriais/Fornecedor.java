@@ -47,10 +47,10 @@ public class Fornecedor {
     }
     public void buscaRegistro(int busca) throws FileNotFoundException, IOException{
         int indice,indice2;
-        this.nomeFornecedor="Item nãoo encontrado";
-        this.telefoneFornecedor="Item nãoo encontrado";
+        this.nomeFornecedor="Item não encontrado";
+        this.telefoneFornecedor="Item não encontrado";
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt")) {
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lÃª a primeira linha
@@ -75,7 +75,7 @@ public class Fornecedor {
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
         int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -94,12 +94,12 @@ public class Fornecedor {
     }
      public void incluiRegistro(boolean novo) throws IOException{
         Scanner input = new Scanner(System.in);
-        System.out.println("Digite o nome do fornecedor que deseja incluir:");
+        System.out.println("CADASTRO DE FORNECEDOR!\nDigite o nome do fornecedor que deseja incluir:");
         this.setNomeFornecedor(input.nextLine());
         System.out.println("Digite o telefone do fornecedor que deseja incluir:");
         this.setTelefoneFornecedor(input.nextLine());
         this.setCodFornecedor(this.UltimoCodigo());
-        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt", novo)) {
+        try (FileWriter arq = new FileWriter("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf(this.getCodFornecedor()+";"+this.getNomeFornecedor()+";"+this.getTelefoneFornecedor()+"\n");
         }
@@ -109,7 +109,7 @@ public class Fornecedor {
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Fornecedor\n";
         int tamanho=0;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
