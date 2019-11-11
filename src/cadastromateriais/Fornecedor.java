@@ -50,7 +50,7 @@ public class Fornecedor {
         this.nomeFornecedor="Item não encontrado";
         this.telefoneFornecedor="Item não encontrado";
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt")) {
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lÃª a primeira linha
@@ -75,7 +75,7 @@ public class Fornecedor {
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
         int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt"))
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -99,7 +99,7 @@ public class Fornecedor {
         System.out.println("Digite o telefone do fornecedor que deseja incluir:");
         this.setTelefoneFornecedor(input.nextLine());
         this.setCodFornecedor(this.UltimoCodigo());
-        try (FileWriter arq = new FileWriter("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt", novo)) {
+        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf(this.getCodFornecedor()+";"+this.getNomeFornecedor()+";"+this.getTelefoneFornecedor()+"\n");
         }
@@ -109,7 +109,7 @@ public class Fornecedor {
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Fornecedor\n";
         int tamanho=0;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\fornecedores.txt"))
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 

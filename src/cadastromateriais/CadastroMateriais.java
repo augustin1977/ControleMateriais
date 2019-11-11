@@ -32,50 +32,51 @@ public class CadastroMateriais {
         limparSaida();
         Scanner input = new Scanner(System.in);
         String leitura;
-        int op = 1, subOp;
+        int op, subOp=1;
         Produtos produto = new Produtos();
         Movimentacao movimentos = new Movimentacao();
         Categorias categoria = new Categorias();
         Fornecedor fornecedor = new Fornecedor();
-        while (op != 9) {
-            System.out.println("MENU DE PESQUISAS:\n-------------------------");
-            System.out.print("1.Pesquisa Produtos\n2.Pesquisa Movimentos de Materiais \n3.Pesquisa de Categorias\n4.Pesquisa de Fornecedores\n9.Sair\n");
-            System.out.print("Opção: ");
-            leitura = input.nextLine();
-            op = Integer.parseInt(leitura);
-            limparSaida();
-            if (op == 1) {
-                System.out.println("PESQUISA DE PRODUTO!\nDigite o codigo do produto a ser pesquisado:");
+        while(subOp==1){
+            op=1;
+            while (op != 9) {
+                System.out.println("MENU DE PESQUISAS:\n-------------------------");
+                System.out.print("1.Pesquisa Produtos\n2.Pesquisa Movimentos de Materiais \n3.Pesquisa de Categorias\n4.Pesquisa de Fornecedores\n9.Sair\n");
+                System.out.print("Opção: ");
                 leitura = input.nextLine();
-                produto.buscaRegistro(Integer.parseInt(leitura));
-                System.out.println(produto.mostraRegistro());
-            } else if (op == 2) {
-                System.out.println("PESQUISA DE MOVIMENTAÇÃO!\nDigite o codigo do movimento a ser pesquisado:");
+                op = Integer.parseInt(leitura);
+                limparSaida();
+                if (op == 1) {
+                    System.out.println("PESQUISA DE PRODUTO!\nDigite o codigo do produto a ser pesquisado:");
+                    leitura = input.nextLine();
+                    produto.buscaRegistro(Integer.parseInt(leitura));
+                    System.out.println(produto.mostraRegistro());
+                } else if (op == 2) {
+                    System.out.println("PESQUISA DE MOVIMENTAÇÃO!\nDigite o codigo do movimento a ser pesquisado:");
+                    leitura = input.nextLine();
+                    movimentos.buscaRegistro(Integer.parseInt(leitura));
+                    System.out.println(movimentos.mostraRegistro());
+                } else if (op == 3) {
+                    System.out.println("PESQUISA DE CATEGORIA!\nDigite o codigo da categoria a ser pesquisado:");
+                    leitura = input.nextLine();
+                    categoria.buscaRegistro(Integer.parseInt(leitura));
+                    System.out.println(categoria.mostraRegistro());
+                } else if (op == 4) {
+                    System.out.println("PESQUISA DE FORNECEDOR!\nDigite o codigo do fornecedor a ser pesquisado:");
+                    leitura = input.nextLine();
+                    fornecedor.buscaRegistro(Integer.parseInt(leitura));
+                    System.out.println(fornecedor.mostraRegistro());
+                } else if (op == 9) {
+                    System.out.println("Retorno!");
+                } else {
+                    System.out.println("Opção invalida!");
+                }
+                System.out.print("1.Menu Pesquisas\n2.Menu Principal\nOpção: ");
                 leitura = input.nextLine();
-                movimentos.buscaRegistro(Integer.parseInt(leitura));
-                System.out.println(movimentos.mostraRegistro());
-            } else if (op == 3) {
-                System.out.println("PESQUISA DE CATEGORIA!\nDigite o codigo da categoria a ser pesquisado:");
-                leitura = input.nextLine();
-                categoria.buscaRegistro(Integer.parseInt(leitura));
-                System.out.println(categoria.mostraRegistro());
-            } else if (op == 4) {
-                System.out.println("PESQUISA DE FORNECEDOR!\nDigite o codigo do fornecedor a ser pesquisado:");
-                leitura = input.nextLine();
-                fornecedor.buscaRegistro(Integer.parseInt(leitura));
-                System.out.println(fornecedor.mostraRegistro());
-            } else if (op == 9) {
-                System.out.println("Retorno!");
-            } else {
-                System.out.println("Opção invalida!");
-            }
-            System.out.print("1.Menu Pesquisas\n2.Menu Principal\nOpção: ");
-            subOp = input.nextInt();
-            if (subOp == 1) {
-                MenuPesquisa();
-            } else {
-                menuPrincipal();
-            }
+                subOp=Integer.parseInt(leitura);
+                op=9;         
+                }
+            
         }
     }
 
@@ -83,42 +84,42 @@ public class CadastroMateriais {
         limparSaida();
         Scanner input = new Scanner(System.in);
         String leitura;
-        int op = 1, subOp;
+        int op = 1, subOp=1;
         Produtos produto = new Produtos();
         Movimentacao movimentos = new Movimentacao();
         Categorias categoria = new Categorias();
         Fornecedor fornecedor = new Fornecedor();
-        while (op != 9) {
-            System.out.println("IMPRESSÃO DE RELATORIOS:\n-------------------------");
-            System.out.print("1.Lista de Produtos\n2.Lista de Movimentos de Materiais \n3.Lista de Categorias\n4.Lista de Fornecedores\n5.Relatório de Materiais\n9.Voltar\n");
-            System.out.print("Opção: ");
-            leitura = input.nextLine();
-            op = Integer.parseInt(leitura);
-            limparSaida();
-            if (op == 1) {
-                System.out.println("RELATÓRIO DE PRODUTOS!\n" + produto.listaProdutos());
-            } else if (op == 2) {
+        while (subOp==1){
+            while (op != 9) {
+                System.out.println("IMPRESSÃO DE RELATORIOS:\n-------------------------");
+                System.out.print("1.Lista de Produtos\n2.Lista de Movimentos de Materiais \n3.Lista de Categorias\n4.Lista de Fornecedores\n5.Relatório de Materiais\n9.Voltar\n");
+                System.out.print("Opção: ");
+                leitura = input.nextLine();
+                op = Integer.parseInt(leitura);
+                limparSaida();
+                if (op == 1) {
+                    System.out.println("RELATÓRIO DE PRODUTOS!\n" + produto.listaProdutos());
+                } else if (op == 2) {
 
-                System.out.println("RELATÓRIO DE MOVIMENTOS!\n" + movimentos.listaMovimentos());
-            } else if (op == 3) {
+                    System.out.println("RELATÓRIO DE MOVIMENTOS!\n" + movimentos.listaMovimentos());
+                } else if (op == 3) {
 
-                System.out.println("RELATÓRIO DE CATEGORIAS!\n" + categoria.listaCategorias());
-            } else if (op == 4) {
+                    System.out.println("RELATÓRIO DE CATEGORIAS!\n" + categoria.listaCategorias());
+                } else if (op == 4) {
 
-                System.out.println("RELATÓRIO DE FORNECEDORES!\n" + fornecedor.listaFonecedores());
-            } else if (op == 5) {
-                System.out.println("RELATÓRIO DE MATERIAIS!\n" + produto.relatorioMateriais());
-            } else if (op == 9) {
-                System.out.println("Retorno!");               
-            } else {
-                System.out.println("Opção invalida!");
-            }
-            System.out.print("1.Menu Relatório\n2.Menu Principal\nOpção: ");
-            subOp = input.nextInt();
-            if (subOp == 1) {
-                MenuRelatorios();
-            } else {
-                menuPrincipal();
+                    System.out.println("RELATÓRIO DE FORNECEDORES!\n" + fornecedor.listaFonecedores());
+                } else if (op == 5) {
+                    System.out.println("RELATÓRIO DE MATERIAIS!\n" + produto.relatorioMateriais());
+                } else if (op == 9) {
+                    System.out.println("Retorno!");               
+                } else {
+                    System.out.println("Opção invalida!");
+                }
+                System.out.print("1.Menu Relatório\n2.Menu Principal\nOpção: ");
+                leitura = input.nextLine();
+                op=9;
+                subOp = Integer.parseInt(leitura);
+                System.out.println(subOp);
             }
         }     
 
@@ -134,7 +135,7 @@ public class CadastroMateriais {
         Scanner input = new Scanner(System.in);
         int op = 1;
         while (op != 9) {
-            System.out.println("CADASTRO DE MATERIAIS!\n-------------------------");
+            System.out.println("MENU DE CADASTROS!\n-------------------------");
             System.out.print("1.Cadastrar Categoria\n2.Cadastrar Fornecedor\n3.Cadastrar Produto\n4.Cadastrar Movimentação\n9.Voltar\n");
             System.out.print("Opção: ");
             op = input.nextInt();
@@ -164,7 +165,13 @@ public class CadastroMateriais {
             System.out.print("1.Cadastrar\n2.Pesquisar\n3.Relatórios\n9.sair\n");
             System.out.print("Opção: ");
             leitura = input.nextLine();
-            op = Integer.parseInt(leitura);
+            if (leitura=="")
+            {
+                op=0;
+            }else{
+                op = Integer.parseInt(leitura);
+            }
+            
             if (op == 1) {
                 MenuCadastro();
             } else if (op == 2) {

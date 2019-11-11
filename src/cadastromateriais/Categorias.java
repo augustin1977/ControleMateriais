@@ -45,7 +45,7 @@ public final class Categorias {
         this.nome_categoria="Item não encontrado";
         this.cod_categoria=0;
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt")) {
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lê a primeira linha
@@ -69,7 +69,7 @@ public final class Categorias {
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
         int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt"))
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -93,7 +93,7 @@ public final class Categorias {
         System.out.println("CADASTRO DE CATEGORIA!\nDigite o nome da categoria que deseja incluir:");
         this.setnomeCategoria(input.nextLine());
         this.setcodCategoria(this.UltimoCodigo());
-        try (FileWriter arq = new FileWriter("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt", novo)) {
+        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf(this.cod_categoria+";"+this.nome_categoria+"\n");
         }
@@ -103,7 +103,7 @@ public final class Categorias {
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Categoria\n";
         int tamanho=0;
-        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\categorias.txt"))
+        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\categorias.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -137,7 +137,7 @@ public final class Categorias {
             retorno=("A categoria foi encontrado!\n");
             retorno+="---------------------------\nCODIGO  - NOME CATEGORIA\n";
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getcodCategoria()), 7)+" - ";
-            retorno+=CadastroMateriais.entraEspacos(this.getnomeCategoria(), 10)+"\n";
+            retorno+=CadastroMateriais.entraEspacos(this.getnomeCategoria(), 40)+"\n";
          }
          return retorno;
      }
