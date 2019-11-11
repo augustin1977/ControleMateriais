@@ -55,54 +55,54 @@ public class Movimentacao {
     public void setQuantidadeMovimentacao(int quantidadeMovimentacao) {
         this.quantidadeMovimentacao = quantidadeMovimentacao;
     }
-       public void buscaRegistro(int busca) throws FileNotFoundException, IOException{
-        String[] array=new String[10];
-        this.codigoMovimentacao=0;
-        this.tipoMovimentacao=0;
-        this.quantidadeMovimentacao=0;
-        this.codProduto=0;
-        boolean achei=false;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt")) {
-            BufferedReader lerArq = new BufferedReader(arq2);
-            
-            String linha = lerArq.readLine(); // lê a primeira linha
-            while (linha != null && !achei) {
-                array = linha.split(";");
-                this.codigoMovimentacao=Integer.parseInt(array[0]);
-                if (this.codigoMovimentacao==busca){
-                    achei=true;
-                    this.tipoMovimentacao=Integer.parseInt(array[1]);
-                    this.quantidadeMovimentacao=Integer.parseInt(array[2]);
-                    this.codProduto=Integer.parseInt(array[3]);
-                    
-                }
-                linha = lerArq.readLine();
-            }
-        }
-        if (!achei){
-            this.codigoMovimentacao=0;
-        }
-    }
-       int UltimoCodigo() throws FileNotFoundException, IOException
-    {      
-        int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt"))
-        {
-            BufferedReader lerArq = new BufferedReader(arq2);            
-            String linha = lerArq.readLine(); 
-            indice = linha.indexOf(";", 0);
-            maior = Integer.parseInt(linha.substring(0,indice)); //DECLARA COMO O MAIOR, O PRIMEIRO CÓDIGO LIDO
-            while (linha != null) { 
-                indice = linha.indexOf(";", 0);
-                codigo = Integer.parseInt(linha.substring(0,indice));
-                if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
-                    maior = codigo;
-                }
-                linha = lerArq.readLine();
-            }
-            return (maior+1); //RETORNA O PROXIMO CÓDIGO A SER INSERIDO
-        }
-    }
+    public void buscaRegistro(int busca) throws FileNotFoundException, IOException{
+     String[] array=new String[10];
+     this.codigoMovimentacao=0;
+     this.tipoMovimentacao=0;
+     this.quantidadeMovimentacao=0;
+     this.codProduto=0;
+     boolean achei=false;
+     try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt")) {
+         BufferedReader lerArq = new BufferedReader(arq2);
+
+         String linha = lerArq.readLine(); // lê a primeira linha
+         while (linha != null && !achei) {
+             array = linha.split(";");
+             this.codigoMovimentacao=Integer.parseInt(array[0]);
+             if (this.codigoMovimentacao==busca){
+                 achei=true;
+                 this.tipoMovimentacao=Integer.parseInt(array[1]);
+                 this.quantidadeMovimentacao=Integer.parseInt(array[2]);
+                 this.codProduto=Integer.parseInt(array[3]);
+
+             }
+             linha = lerArq.readLine();
+         }
+     }
+     if (!achei){
+         this.codigoMovimentacao=0;
+     }
+ }
+    public int UltimoCodigo() throws FileNotFoundException, IOException
+ {      
+     int maior, codigo, indice;
+     try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\movimentacao.txt"))
+     {
+         BufferedReader lerArq = new BufferedReader(arq2);            
+         String linha = lerArq.readLine(); 
+         indice = linha.indexOf(";", 0);
+         maior = Integer.parseInt(linha.substring(0,indice)); //DECLARA COMO O MAIOR, O PRIMEIRO CÓDIGO LIDO
+         while (linha != null) { 
+             indice = linha.indexOf(";", 0);
+             codigo = Integer.parseInt(linha.substring(0,indice));
+             if (codigo > maior){ //TESTA SE O CODIGO LIDO ATUALMENTE É MAIOR QUE O LIDO ANTERIORMENTE
+                 maior = codigo;
+             }
+             linha = lerArq.readLine();
+         }
+         return (maior+1); //RETORNA O PROXIMO CÓDIGO A SER INSERIDO
+     }
+ }
     public void incluiRegistro(boolean novo) throws IOException{
         String leitura;
         Produtos p1=new Produtos();
@@ -179,6 +179,30 @@ public class Movimentacao {
             retorno+=CadastroMateriais.entraEspacos(Integer.toString(this.getCodProduto()), 20)+"\n";
          }
          return retorno;
+     }
+    
+    public int estoque(int cMaterial) throws IOException{
+        Produtos p1=new Produtos();
+
+        int nmovimentos,nprodutos,j,estoque;
+        nmovimentos=this.UltimoCodigo();
+        nprodutos=p1.UltimoCodigo();
+        estoque=0;
+        for (j=0;j<nmovimentos;j++){
+            this.buscaRegistro(j);
+            if (this.codProduto==cMaterial){
+                if (this.tipoMovimentacao==1){
+                   estoque+=this.quantidadeMovimentacao ;
+                }
+                else{
+                   estoque-=this.quantidadeMovimentacao ;
+                }
+            }
+             
+
+        }
+        //System.out.println(cMaterial+" "+estoque);
+        return estoque;
      }
 
 }

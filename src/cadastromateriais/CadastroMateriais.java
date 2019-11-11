@@ -93,25 +93,35 @@ public class CadastroMateriais {
             op=1;
             while (op != 9) {
                 System.out.println("IMPRESSÃO DE RELATORIOS:\n-------------------------");
-                System.out.print("1.Lista de Produtos\n2.Lista de Movimentos de Materiais \n3.Lista de Categorias\n4.Lista de Fornecedores\n5.Relatório de Materiais\n9.Voltar\n");
+                System.out.print("1.Lista de Produtos\n2.Lista de Movimentos de Materiais \n3.Lista de Categorias\n4.Lista de Fornecedores\n5.Relatório de Materiais\n6.Relatório de Estoque\n9.Voltar\n");
                 System.out.print("Opção: ");
                 leitura = input.nextLine();
                 op = Integer.parseInt(leitura);
                 limparSaida();
                 if (op == 1) {
-                    System.out.println("RELATÓRIO DE PRODUTOS!\n" + produto.listaProdutos());
+                    System.out.println("RELATÓRIO DE PRODUTOS\n" + produto.listaProdutos());
                 } else if (op == 2) {
 
-                    System.out.println("RELATÓRIO DE MOVIMENTOS!\n" + movimentos.listaMovimentos());
+                    System.out.println("RELATÓRIO DE MOVIMENTOS\n" + movimentos.listaMovimentos());
                 } else if (op == 3) {
 
-                    System.out.println("RELATÓRIO DE CATEGORIAS!\n" + categoria.listaCategorias());
+                    System.out.println("RELATÓRIO DE CATEGORIAS\n" + categoria.listaCategorias());
                 } else if (op == 4) {
 
-                    System.out.println("RELATÓRIO DE FORNECEDORES!\n" + fornecedor.listaFonecedores());
+                    System.out.println("RELATÓRIO DE FORNECEDORES\n" + fornecedor.listaFonecedores());
                 } else if (op == 5) {
-                    System.out.println("RELATÓRIO DE MATERIAIS!\n" + produto.relatorioMateriais());
-                } else if (op == 9) {
+                    System.out.println("RELATÓRIO DE MATERIAIS\n" + produto.relatorioMateriais());
+                } else if (op == 6) {
+                    System.out.println("RELATÓRIO DE ESTOQUE\n----------------------------------------------");
+                    System.out.println("CODIGO - DESCRIÇÃO DO ITEM                        - QUANTIDADE");
+                    for (int i=0;i<produto.UltimoCodigo();i++){
+                        produto.buscaRegistro(i);
+                        if (produto.getCodProduto()!=0){
+                            System.out.println(entraEspacos(Integer.toString(produto.getCodProduto()),6)+" - "+entraEspacos(produto.getdescricao(),40) +" - "+ movimentos.estoque(produto.getCodProduto()));
+                        }
+                    }
+                    System.out.println("----------------------------------------------");
+                }else if (op == 9) {
                     System.out.println("Retorno!");               
                 } else {
                     System.out.println("Opção invalida!");
@@ -188,6 +198,8 @@ public class CadastroMateriais {
     }
 
     public static void main(String[] args) throws IOException {
+        Movimentacao m1 =new Movimentacao();
+        System.out.println(m1.estoque(5));
         menuPrincipal();
     }
 
