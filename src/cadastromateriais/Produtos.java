@@ -72,7 +72,7 @@ public class Produtos {
         this.preco=0.0f;
         this.codCategoria=0;
         boolean achei=false;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt")) {
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\Produtos.txt")) {
             BufferedReader lerArq = new BufferedReader(arq2);
             
             String linha = lerArq.readLine(); // lê a primeira linha
@@ -97,7 +97,7 @@ public class Produtos {
     public int UltimoCodigo() throws FileNotFoundException, IOException
     {      
         int maior, codigo, indice;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\Produtos.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -119,7 +119,7 @@ public class Produtos {
         Categorias c1=new Categorias();
         Fornecedor f1=new Fornecedor();
         Scanner input = new Scanner(System.in);
-        System.out.println("Digite a descrição do produto que deseja incluir que deseja incluir:");
+        System.out.println("CADASTRO DE PRODUTOS!\nDigite a descrição do produto que deseja incluir:");
         this.setdescricao(input.nextLine());
         System.out.println("Digite o preço produto que deseja incluir:");
         leitura=input.nextLine();
@@ -138,7 +138,7 @@ public class Produtos {
         leitura=input.nextLine();
         this.setCodFornecedor(Integer.parseInt(leitura));
         this.setCodProduto(this.UltimoCodigo());
-        try (FileWriter arq = new FileWriter("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt", novo)) {
+        try (FileWriter arq = new FileWriter("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\Produtos.txt", novo)) {
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.printf("%d;%s;%.2f;%d;%d\n",this.getCodProduto(),this.getdescricao(),this.getPreco(),this.getCodCategoria(),this.getCodFornecedor());
         }
@@ -147,7 +147,7 @@ public class Produtos {
         String[] array=new String[10];
         String retorno="---------------------------\nCODIGO -  DESCRIÇÃO PRODUTO\n";
         int tamanho=0;
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\Produtos.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
@@ -178,7 +178,7 @@ public class Produtos {
         String retorno="---------------------------\nCODIGO  - DESCRIÇÃO PRODUTO                   - PREÇO     - CATEGORIA MATERIAL         - NOME FORNECEDOR\n";
         Categorias categoria=new Categorias();
         Fornecedor fornecedor=new Fornecedor();
-        try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\Produtos.txt"))
+        try (FileReader arq2 = new FileReader("C:\\Users\\Lucas\\Documents\\NetBeansProjects\\ControleMateriais\\Produtos.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
