@@ -198,8 +198,7 @@ public class CadastroMateriais {
     }
 
     public static void main(String[] args) throws IOException {
-        Movimentacao m1 =new Movimentacao();
-        System.out.println(m1.estoque(5));
+
         menuPrincipal();
     }
 
