@@ -110,18 +110,7 @@ public final class Categorias {
             while (linha != null) {
                 tamanho++;
                 array = linha.split(";");
-                if (tamanho<10){
-                    retorno+=array[0]+"      -  "+array[1]+"\n";
-                }
-                else if (tamanho<100){
-                    retorno+=array[0]+"     -  "+array[1]+"\n";
-                }
-                else if (tamanho<1000){
-                    retorno+=array[0]+"    -  "+array[1]+"\n";
-                }
-                else if (tamanho<10000){
-                    retorno+=array[0]+"    -  "+array[1]+"\n";
-                }
+                retorno+=CadastroMateriais.entraEspacos(array[0], 6)+" -  "+ CadastroMateriais.entraEspacos(array[1], 50)+"\n";
                 linha = lerArq.readLine();
             }
         }
