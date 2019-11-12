@@ -108,16 +108,14 @@ public class Fornecedor {
     public String listaFonecedores() throws FileNotFoundException, IOException{
         String[] array=new String[10];
         String retorno="---------------------------\ncodigo -  Nome Fornecedor\n";
-        int tamanho=0;
         try (FileReader arq2 = new FileReader("D:\\Eric\\Documentos\\Unesc\\4 Semestre\\POO\\CadastroMateriais\\fornecedores.txt"))
         {
             BufferedReader lerArq = new BufferedReader(arq2);            
             String linha = lerArq.readLine(); 
             System.out.println("teste");
             while (linha != null) { 
-                tamanho++;
                 array = linha.split(";");
-                
+                retorno+=CadastroMateriais.entraEspacos(array[0], 6)+" -  "+ CadastroMateriais.entraEspacos(array[1], 50)+"\n";
                 linha = lerArq.readLine();
             }
         }
